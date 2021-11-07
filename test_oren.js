@@ -9,8 +9,8 @@ function phone_oren_way(event){
     strokeWeight(packageGap*0.52)
     stroke('white')
     point(userPath.X, userPath.Y)
-    const ways=[0,0]
     var index=point_index()
+    console.log(userPath.Y)
     // up and down
     if(abs(beta)>abs(gamma)){
         // const packageGap=screenFace.height/15
@@ -18,35 +18,40 @@ function phone_oren_way(event){
         if(beta>0){
             //no wall on down 
             if(canWeGo(index,index+1)){
-                userPath.X+=add_path(beta)
-            }else if(userPath.X<parseInt(index/mazelength+1)*packageGap-0.1*packageGap){
-                userPath.X+=add_path(beta)
+                userPath.Y+=add_path(beta)
+            }else if(userPath.Y<parseInt(index/mazelength+1)*packageGap-0.1*packageGap){
+                userPath.Y+=add_path(beta)
             }
-        }else if(beta<0){
+        }//up
+        else if(beta<0){
             if(canWeGo(index,index-1)){
-                userPath.X-=add_path(beta)
-            }else if(userPath.X<parseInt(index/mazelength-1)*packageGap+0.1*packageGap){
-                userPath.X-=add_path(beta)
+                userPath.Y-=add_path(beta)
+            }else if(userPath.Y>(max(index/mazelength-1,0.5))*packageGap+0.1*packageGap){
+                userPath.Y-=add_path(beta)
             }
         }
     }// left and right
     else{
         if(gamma>0){
             if(canWeGo(index,index+mazelength)){
-                userPath.Y+=add_path(gamma)
-            }else if(userPath.Y<parseInt(index/mazelength+1)*packageGap-0.1*packageGap){
-                userPath.Y+=add_path(gamma)
+                userPath.X+=add_path(gamma)
+            }else if(userPath.X<parseInt(index%mazelength+1)*packageGap-0.1*packageGap){
+                userPath.X+=add_path(gamma)
             }
         }else if(gamma<0){
             if(canWeGo(index,index-mazelength)){
-                userPath.Y-=add_path(gamma)
-            }else if(userPath.Y<parseInt(index/mazelength-1)*packageGap+0.1*packageGap){
-                userPath.Y-=add_path(gamma)
+                userPath.X-=add_path(gamma)
+            }else if(userPath.X>max(index%mazelength-1,0.5)*packageGap+0.1*packageGap){
+                userPath.X-=add_path(gamma)
             }
 
         }
     }
 
+}
+
+function max(a,b){
+    return a>b?a:b
 }
 
 function point_index(){
@@ -61,6 +66,4 @@ function add_path(area){
     return parseInt(packageGap/90*abs(area))
 }
 
-window.addEventListener("deviceorientation",(event)=>{
-    phone_oren_way(event)
-})
+window.addEventListener("deviceorientation",phone_oren_way)
