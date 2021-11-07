@@ -42,6 +42,62 @@ function phone_oren_way(event){
         }
 
 }
+var user_index=0
+
+
+function pack_way(event){
+    const beta = event.beta,
+    gamma = event.gamma;
+    strokeWeight(packageGap*0.55)
+    stroke('white')
+    point(userPath.X, userPath.Y)
+    if(abs(beta*0.5)>abs(gamma)){
+        //up
+        if(beta<0){
+            //如果上升后原来这个格子里面
+            if(
+                -packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.5*packageGap
+                
+                ){
+                userPath.Y-=packageGap*0.1
+            }//否则，就这个格子和上一个格子是否打通了
+            else if(canWeGo(user_index,user_index-1)){
+                userPath.Y-=packageGap*0.1
+                user_index-=1
+            }
+        }else if(beta>0){
+            //down
+            //如果下降后还在原来的格子里面
+            if(packageGap*0.1+userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.5*packageGap){
+                userPath.Y+=packageGap*0.1
+            }else if(canWeGo(user_index,user_index+1)){
+                userPath.Y+=packageGap*0.1
+                user_index+=1
+            }
+        }
+    }else{
+        //right
+        if(gamma>0){
+            if(packageGap*0.1+userPath.X<parseInt(user_index/15+1)*packageGap-0.5*packageGap){
+                userPath.X+=packageGap*0.1
+            }else if(canWeGo(user_index,user_index+15)){
+                userPath.X+=packageGap*0.1
+                user_index+=15
+            }
+        }//left
+        else if(gamma<0){
+            if(-packageGap*0.1+userPath.X>parseInt(user_index/15)*packageGap+0.5*packageGap){
+                userPath.X-=packageGap*0.1
+            }else if(canWeGo(user_index,user_index-15)){
+                userPath.X-=packageGap*0.1
+                user_index-=15
+            }
+        }
+    }
+
+}
+
+
 
 function max(a,b){
     return a>b?a:b
@@ -56,7 +112,8 @@ function point_index(){
 }
 
 function add_path(area){
-    return parseInt(0.55*packageGap/90*abs(area))
+    return parseInt(packageGap/180*abs(area))
 }
 
-window.addEventListener("deviceorientation",phone_oren_way)
+// window.addEventListener("deviceorientation",phone_oren_way)
+window.addEventListener("deviceorientation",pack_way)
