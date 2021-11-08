@@ -7,7 +7,7 @@ function pack_way(event){
     */
     const beta = event.beta,
     gamma = event.gamma;
-    strokeWeight(packageGap*0.55)
+    strokeWeight(packageGap*0.5)
     stroke('white')
     point(userPath.X, userPath.Y)
         //up
