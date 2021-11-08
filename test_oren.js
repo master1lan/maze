@@ -7,13 +7,13 @@ function pack_way(event){
     */
     const beta = event.beta,
     gamma = event.gamma;
-    strokeWeight(packageGap*0.5)
+    strokeWeight(packageGap*0.5+1)
     stroke('white')
     point(userPath.X, userPath.Y)
-    topWallPx=5+parseInt(user_index%15)*packageGap+0.25*packageGap
-    downWallPx=5+parseInt(user_index%15+1)*packageGap-0.25*packageGap
-    leftWallPx=5+parseInt(user_index/15)*packageGap+0.25*packageGap
-    rightWallPx=5+parseInt(user_index/15+1)*packageGap-0.25*packageGap
+    topWallPx=5+parseInt(user_index%15)*packageGap+0.25*packageGap+1
+    downWallPx=5+parseInt(user_index%15+1)*packageGap-0.25*packageGap-1
+    leftWallPx=5+parseInt(user_index/15)*packageGap+0.25*packageGap+1
+    rightWallPx=5+parseInt(user_index/15+1)*packageGap-0.25*packageGap-1
     //up
     if(beta<0){
         //如果上升后原来这个格子里面
