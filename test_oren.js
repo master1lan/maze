@@ -13,7 +13,7 @@ function pack_way(event){
         //up
         if(beta<0){
             //如果上升后原来这个格子里面
-            if(-packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap){
+            if(-packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.3*packageGap){
                 userPath.Y-=packageGap*0.1
             }//这里是重中之重
             else if(
