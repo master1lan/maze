@@ -13,7 +13,7 @@ function pack_way(event){
         //up
         if(beta<0){
             //如果上升后原来这个格子里面
-            if(-packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.5*packageGap){
+            if(-packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap){
                 userPath.Y-=packageGap*0.1
             }//这里是重中之重
             else if(
@@ -28,7 +28,7 @@ function pack_way(event){
         else if(beta>0){
             //down
             //如果下降后还在原来的格子里面
-            if(packageGap*0.1+userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.5*packageGap){
+            if(packageGap*0.1+userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap){
                 userPath.Y+=packageGap*0.1
             }else if(
                 canWeGo(user_index,user_index+1)&&
@@ -41,12 +41,12 @@ function pack_way(event){
         }
         //right
         if(gamma>0){
-            if(packageGap*0.1+userPath.X<parseInt(user_index/15+1)*packageGap-0.5*packageGap){
+            if(packageGap*0.1+userPath.X<parseInt(user_index/15+1)*packageGap-0.2*packageGap){
                 userPath.X+=packageGap*0.1
             }else if(
                 canWeGo(user_index,user_index+15)&&
-                userPath.Y>5+parseInt(user_index%15)*packageGap+0.1*packageGap&&
-                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.1*packageGap
+                userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap&&
+                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap
                 ){
                 userPath.X+=packageGap*0.1
                 user_index+=15
@@ -57,8 +57,8 @@ function pack_way(event){
                 userPath.X-=packageGap*0.1
             }else if(
                 canWeGo(user_index,user_index-15)&&
-                userPath.Y>5+parseInt(user_index%15)*packageGap+0.1*packageGap&&
-                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.1*packageGap
+                userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap&&
+                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap
                 ){
                 userPath.X-=packageGap*0.1
                 user_index-=15
