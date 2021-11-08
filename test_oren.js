@@ -10,60 +10,64 @@ function pack_way(event){
     strokeWeight(packageGap*0.5)
     stroke('white')
     point(userPath.X, userPath.Y)
-        //up
-        if(beta<0){
-            //如果上升后原来这个格子里面
-            if(-packageGap*0.1+userPath.Y>5+parseInt(user_index%15)*packageGap+0.3*packageGap){
+    topWallPx=5+parseInt(user_index%15)*packageGap+0.25*packageGap
+    downWallPx=5+parseInt(user_index%15+1)*packageGap-0.25*packageGap
+    leftWallPx=5+parseInt(user_index/15)*packageGap+0.25*packageGap
+    rightWallPx=5+parseInt(user_index/15+1)*packageGap-0.25*packageGap
+    //up
+    if(beta<0){
+        //如果上升后原来这个格子里面
+        if(-packageGap*0.1+userPath.Y>topWallPx){
                 userPath.Y-=packageGap*0.1
-            }//这里是重中之重
-            else if(
-                canWeGo(user_index,user_index-1)&&
-                userPath.X>parseInt(user_index/15)*packageGap+0.1*packageGap&&
-                userPath.X<parseInt(user_index/15+1)*packageGap-0.1*packageGap
-                ){
-                userPath.Y-=packageGap*0.1
-                user_index-=1
-            }
+        }//这里是重中之重
+        else if(
+            canWeGo(user_index,user_index-1)&&
+            userPath.X>leftWallPx&&
+            userPath.X<rightWallPx
+            ){
+            userPath.Y-=packageGap*0.1
+            user_index-=1
         }
-        else if(beta>0){
-            //down
-            //如果下降后还在原来的格子里面
-            if(packageGap*0.1+userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap){
-                userPath.Y+=packageGap*0.1
-            }else if(
-                canWeGo(user_index,user_index+1)&&
-                userPath.X>parseInt(user_index/15)*packageGap+0.1*packageGap&&
-                userPath.X<parseInt(user_index/15+1)*packageGap-0.1*packageGap
-                ){
-                userPath.Y+=packageGap*0.1
-                user_index+=1
-            }
+    }
+    else if(beta>0){
+        //down
+        //如果下降后还在原来的格子里面
+        if(packageGap*0.1+userPath.Y<downWallPx){
+            userPath.Y+=packageGap*0.1
+        }else if(
+            canWeGo(user_index,user_index+1)&&
+            userPath.X>leftWallPx&&
+            userPath.X<rightWallPx
+            ){
+            userPath.Y+=packageGap*0.1
+            user_index+=1
         }
-        //right
-        if(gamma>0){
-            if(packageGap*0.1+userPath.X<parseInt(user_index/15+1)*packageGap-0.2*packageGap){
-                userPath.X+=packageGap*0.1
-            }else if(
-                canWeGo(user_index,user_index+15)&&
-                userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap&&
-                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap
-                ){
-                userPath.X+=packageGap*0.1
-                user_index+=15
-            }
-        }//left
-        else if(gamma<0){
-            if(-packageGap*0.1+userPath.X>parseInt(user_index/15)*packageGap+0.5*packageGap){
-                userPath.X-=packageGap*0.1
-            }else if(
-                canWeGo(user_index,user_index-15)&&
-                userPath.Y>5+parseInt(user_index%15)*packageGap+0.2*packageGap&&
-                userPath.Y<5+parseInt(user_index%15+1)*packageGap-0.3*packageGap
-                ){
-                userPath.X-=packageGap*0.1
-                user_index-=15
-            }
+    }
+    //right
+    if(gamma>0){
+        if(packageGap*0.1+userPath.X<rightWallPx){
+            userPath.X+=packageGap*0.1
+        }else if(
+            canWeGo(user_index,user_index+15)&&
+            userPath.Y>topWallPx&&
+            userPath.Y<downWallPx
+            ){
+            userPath.X+=packageGap*0.1
+            user_index+=15
         }
+    }//left
+    else if(gamma<0){
+        if(-packageGap*0.1+userPath.X>leftWallPx){
+            userPath.X-=packageGap*0.1
+        }else if(
+            canWeGo(user_index,user_index-15)&&
+            userPath.Y>topWallPx&&
+            userPath.Y<downWallPx
+            ){
+            userPath.X-=packageGap*0.1
+            user_index-=15
+        }
+    }
 
 }
 
