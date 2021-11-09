@@ -26,7 +26,7 @@ function setup(){
 }
 
 function draw(){
-    strokeWeight(packageGap*0.5)
+    strokeWeight(packageGap*0.6)
     stroke('black')
     point(userPath.X, userPath.Y)
 }
@@ -43,7 +43,7 @@ function keyPressed(){
         ((userPath.Y-5-0.5*packageGap)/packageGap)
     )
     var addPath=[0,0]
-    console.log({index})
+    // console.log({index})
     if(moveUp){
         // console.log("up!")
         addPath[1]=canWeGo(index,index-1)==0?0:-packageGap
@@ -57,7 +57,7 @@ function keyPressed(){
         // console.log("right!")
         addPath[0]=canWeGo(index+mazelength,index)==0?0:packageGap
     }
-    strokeWeight(packageGap*0.52)
+    strokeWeight(packageGap*0.6+1)
     stroke('white')
     point(userPath.X, userPath.Y)
     userPath.X+=addPath[0]
@@ -67,7 +67,7 @@ function keyPressed(){
         ((userPath.Y-5-0.5*packageGap)/packageGap)
     )
     var addPath=[0,0]
-    console.log({index})
+    // console.log({index})
 
 }
 

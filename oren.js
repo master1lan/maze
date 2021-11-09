@@ -7,13 +7,13 @@ function pack_way(event){
     */
     const beta = event.beta,
     gamma = event.gamma;
-    strokeWeight(packageGap*0.5)
+    strokeWeight(packageGap*0.6+1)
     stroke('white')
     point(userPath.X, userPath.Y)
-    topWallPx=5+parseInt(user_index%15)*packageGap+0.25*packageGap
-    downWallPx=5+parseInt(user_index%15+1)*packageGap-0.25*packageGap
-    leftWallPx=5+parseInt(user_index/15)*packageGap+0.25*packageGap
-    rightWallPx=5+parseInt(user_index/15+1)*packageGap-0.25*packageGap
+    topWallPx=5+parseInt(user_index%15)*packageGap+0.3*packageGap+1
+    downWallPx=5+parseInt(user_index%15+1)*packageGap-0.3*packageGap-1
+    leftWallPx=5+parseInt(user_index/15)*packageGap+0.3*packageGap+1
+    rightWallPx=5+parseInt(user_index/15+1)*packageGap-0.3*packageGap-1
     //up
     if(beta<0){
         //如果上升后原来这个格子里面
@@ -69,24 +69,6 @@ function pack_way(event){
         }
     }
 
-}
-
-
-
-function max(a,b){
-    return a>b?a:b
-}
-
-function point_index(){
-    /*
-    当点位于(0,0)向(0,1)移动时，无论是否有墙都必须可以移动，直到碰到墙
-    */
-    return mazelength*parseInt((userPath.X-5-0.5*packageGap)/packageGap)+parseInt((userPath.Y-5-0.5*packageGap)/packageGap)
-
-}
-
-function add_path(area){
-    return parseInt(packageGap/180*abs(area))
 }
 
 window.addEventListener("deviceorientation",pack_way)
