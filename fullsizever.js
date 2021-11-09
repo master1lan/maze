@@ -3,12 +3,17 @@
 */
 const autosize=document.documentElement.clientHeight>
         document.documentElement.clientWidth?
-        document.documentElement.clientWidth:
-        document.documentElement.clientHeight
-//应该是整百的
+        document.documentElement.clientWidth-13:
+        document.documentElement.clientHeight-13
+
 const screenFace={
     height:autosize-autosize%105,
     width:autosize-autosize%105
+}
+
+const canvasMargin={
+    LR:(document.documentElement.clientWidth-screenFace.width)/2,
+    TD:(document.documentElement.clientHeight-screenFace.height)/2
 }
 
 const packageGap=screenFace.height/15
@@ -21,6 +26,12 @@ const userPath={
 
 function setup(){
     createCanvas(screenFace.width+10,screenFace.height+10);
+    let divCanvas=select('canvas')
+    divCanvas.style('position','absolute')
+    divCanvas.style('top',canvasMargin.TD)
+    divCanvas.style('bottom',canvasMargin.TD)
+    divCanvas.style('left',canvasMargin.LR)
+    divCanvas.style('right',canvasMargin.LR)
     drawChessBoard();//绘制棋盘
     findway()
 }
@@ -82,9 +93,9 @@ function findway(){
         drawline(num,neihbour);//划线
         union(num,neihbour);
         }
-        // setTimeout(function(){
-        //     findway()},5)
-            findway();
+        setTimeout(function(){
+            findway()},5)
+            // findway();
     }
 }
 
