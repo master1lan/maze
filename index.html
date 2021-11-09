@@ -16,7 +16,7 @@
     function changeVisible(){
       var e1=document.getElementById('modal')
       e1.style.visibility=(e1.style.visibility == "visible")? "hidden" : "visible";
-      if(roadOK==false){
+      if(roadOK==false&&e1.style.visibility=="hidden"){
         findway()
         roadOK=true;
       }
