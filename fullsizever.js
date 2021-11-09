@@ -33,14 +33,14 @@ function setup(){
     divCanvas.style('left',canvasMargin.LR)
     divCanvas.style('right',canvasMargin.LR)
     drawChessBoard();//绘制棋盘
-    findway()
+    // findway()
 }
-
-function draw(){
-    strokeWeight(packageGap*0.6)
-    stroke('black')
-    point(userPath.X, userPath.Y)
-}
+//严重影响感官
+// function draw(){
+    // strokeWeight(packageGap*0.6)
+    // stroke('black')
+    // point(userPath.X, userPath.Y)
+// }
 
 
 
@@ -77,7 +77,14 @@ function keyPressed(){
         15*((userPath.X-5-0.5*packageGap)/packageGap)+
         ((userPath.Y-5-0.5*packageGap)/packageGap)
     )
+    //
+    if(index==224){
+
+    }
     var addPath=[0,0]
+    strokeWeight(packageGap*0.6)
+    stroke('black')
+    point(userPath.X, userPath.Y)
     // console.log({index})
 
 }
@@ -144,6 +151,7 @@ function drawChessBoard(){//绘画
             screenFace.width+5,i*packageGap+5)
         // line(15,15+i*30,15+30*mazelength,15+i*30)
     }
+    //在224那里话一个东西怎么画呢？
 }
 
 function abs(a){
