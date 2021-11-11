@@ -1,10 +1,7 @@
 /*
     for auto fullscreen
 */
-const autosize=document.documentElement.clientHeight>
-        document.documentElement.clientWidth?
-        document.documentElement.clientWidth-13:
-        document.documentElement.clientHeight-13
+const autosize=window.innerHeight>window.innerWidth?window.innerWidth:window.innerHeight;
 
 const screenFace={
     height:autosize-autosize%105,
@@ -12,11 +9,11 @@ const screenFace={
 }
 
 const canvasMargin={
-    LR:(document.documentElement.clientWidth-screenFace.width)/2,
-    TD:(document.documentElement.clientHeight-screenFace.height)/2
+    LR:(window.innerWidth-screenFace.width)/2,
+    TD:(window.innerHeight-screenFace.height)/2
 }
 
-const packageGap=screenFace.height/15
+const packageGap=screenFace.height/mazelength
 
 const userPath={
     X:packageGap/2+5,
@@ -33,7 +30,7 @@ function setup(){
     divCanvas.style('left',canvasMargin.LR)
     divCanvas.style('right',canvasMargin.LR)
     drawChessBoard();//绘制棋盘
-    // findway()
+    findway()
 }
 //严重影响感官
 // function draw(){
@@ -42,7 +39,8 @@ function setup(){
     // point(userPath.X, userPath.Y)
 // }
 
-
+var fullsize_224=false
+var fullsize_0=false
 
 function keyPressed(){
     var moveUp = keyCode == 38 //|| key=="W"
@@ -74,12 +72,18 @@ function keyPressed(){
     userPath.X+=addPath[0]
     userPath.Y+=addPath[1]
     var index=parseInt(
-        15*((userPath.X-5-0.5*packageGap)/packageGap)+
+        mazelength*((userPath.X-5-0.5*packageGap)/packageGap)+
         ((userPath.Y-5-0.5*packageGap)/packageGap)
     )
     //
-    if(index==224){
-
+    if(fullsize_224==false&&index==224&&userPath.X>packageGap*14.5&&userPath.Y>packageGap*14.5){
+        fullsize_224=true
+        // console.log("wow")
+        //终点奖励
+    }
+    if(fullsize_0==false&&fullsize_224==true&&user_index==0&&userPath.X<=packageGap*0.5+5&&userPath.Y<=packageGap*0.5+5){
+        //彩蛋奖励
+        fullsize_0=true
     }
     var addPath=[0,0]
     strokeWeight(packageGap*0.6)
@@ -92,7 +96,6 @@ function keyPressed(){
 function findway(){
     if(search(0)!=search(mazelength*mazelength-1)){
         var num = parseInt(Math.random() * mazelength*mazelength );
-        //产生一个小于196的随机数
         var neihbour=getnei(num);
         if(search(num)!=search(neihbour)){
         isling[num][neihbour]=1;
@@ -118,7 +121,7 @@ function drawline(a,b)//划线，要判断是上下还是左右
     var x3=(x1+x2)/2;
     var y3=(y1+y2)/2;
     // stroke('green')
-    stroke(255)
+    stroke("rgba(2,29,58,1)")
     strokeWeight(4)
     if(x1-x2==1||x1-x2==-1)//左右方向的点  需要上下划线
     {
@@ -140,6 +143,8 @@ function drawline(a,b)//划线，要判断是上下还是左右
 */
 
 function drawChessBoard(){//绘画
+    stroke("white")
+    strokeWeight(3)
     //为什么粗细会不同呢
     for(var i=0;i<mazelength+1;i++){
         //竖线

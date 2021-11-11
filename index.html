@@ -3,7 +3,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href='favicon.ico'>
-  <!-- <link href="style.css"> -->
   <head>
     <title>maze!</title>	
   </head>
@@ -11,56 +10,6 @@
   <script src="mazeMap.js" async></script>
   <script src="fullsizever.js" async></script>
   <script src="oren.js" async></script>
-  <script>
-    var roadOK=false;
-    function changeVisible(){
-      var e1=document.getElementById('modal')
-      e1.style.visibility=(e1.style.visibility == "visible")? "hidden" : "visible";
-      if(roadOK==false&&e1.style.visibility=="hidden"){
-        findway()
-        roadOK=true;
-      }
-    }
-    function modalOpen(modal){
-      modal.innerHTML=`
-      <div style="text-align:center">
-        <p>电脑端用户请使用上下左右键进行操作或者使用devtools</p>
-        <p>移动端请移动设备，该页面使用陀螺仪进行操作</p>
-        <button type="button" onclick="changeVisible()">确定</button>
-        </div>
-      `
-    }
-  </script>
-  <body>
-    <div id="modal">
-    </div>
-    
+  <body style="background-color: rgba(2,29,58,1);margin:0px;padding:0px;overflow:hidden;">
   </body>
-  <script>
-    window.onload = function (){
-      const modal=document.getElementById('modal');
-      const modalSize={
-        height:(document.documentElement.clientHeight-document.documentElement.clientHeight%100)*0.4,
-        width:(document.documentElement.clientWidth-document.documentElement.clientWidth%100)*0.8
-      }
-      const modalMargin={
-        TD:(document.documentElement.clientHeight-modalSize.height)/2,
-        LR:(document.documentElement.clientWidth-modalSize.width)/2
-      }
-      // modal.style.visibility="hidden";
-      modal.style.visibility="visible";
-      modal.style.position='absolute';
-      modal.style.zIndex=999;
-      modal.style.background='white';
-      modal.style.opacity=0.9;
-      // modal.style.height=modalSize.height;
-      modal.style.width=modalSize.width;
-      modal.style.top=modalMargin.TD;
-      // modal.style.bottom=modalMargin.TD;
-      modal.style.left=modalMargin.LR;
-      modal.style.right=modalMargin.LR;
-      modalOpen(modal);
-    }
-    
-  </script>
 </html>

@@ -1,3 +1,7 @@
+/**
+ * 这个文件用来生成迷宫图
+ */
+var is_get_end=false;
 const mazelength=15
 const tree = [];//存放是否联通
 const isling=[];//判断是否相连
@@ -27,6 +31,8 @@ function getnei(a)//获得邻居号  random
     var ran=parseInt(Math.random() * mynei.length );
     return mynei[ran];
 }
+
+
 function search(a)//找到根节点
 {
     if(tree[parseInt(a/mazelength)][a%mazelength]>0)//说明是子节点
@@ -36,6 +42,8 @@ function search(a)//找到根节点
     else
         return a;
 }
+
+
 function value(a)//找到树的大小
 {
     if(tree[parseInt(a/mazelength)][a%mazelength]>0)//说明是子节点
@@ -45,6 +53,8 @@ function value(a)//找到树的大小
     else
         return -tree[parseInt(a/mazelength)][a%mazelength];
 }
+
+
 function union(a,b)//合并
 {
     var a1=search(a);//a根
@@ -64,7 +74,6 @@ function union(a,b)//合并
 }
 
   
-    
 
 const canWeGo=(x,y)=>{
     if(x<0||y<0){
