@@ -6,13 +6,13 @@ function get_end(){
 function play_final(end_star,degree){
     if(window.innerHeight>window.innerWidth){
         //android
-        image(end_star[4],0,0,window.innerWidth,canvasPosition.top-5)
-        image(end_star[4],0,canvasPosition.bottom,window.innerWidth,canvasPosition.top)
+        // image(end_star[4],0,0,window.innerWidth,canvasPosition.top-5)
+        // image(end_star[4],0,canvasPosition.bottom,window.innerWidth,canvasPosition.top)
         star_with_android(end_star,degree)
     }else{
         //pc
-        image(end_star[4],0,0,canvasPosition.left,window.innerHeight)
-        image(end_star[4],canvasPosition.right,0,canvasPosition.left,window.innerHeight)
+        // image(end_star[4],0,0,canvasPosition.left,window.innerHeight)
+        // image(end_star[4],canvasPosition.right,0,canvasPosition.left,window.innerHeight)
         star_with_pc(end_star,degree)
     }
 }

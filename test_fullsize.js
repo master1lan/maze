@@ -57,15 +57,11 @@ function setup(){
     end_star.push(loadImage('img/B612.png'))
     end_star.push(loadImage('img/planet.png'))
     end_star.push(loadImage('img/star.png'))
-    end_star.push(loadImage('img/origin.png'))
+    // end_star.push(loadImage('img/origin.png'))
 }
 
 
-function draw(){
-    if((fullsize_end==true||oren_end==true)&&is_get_end==false){
-        play_final(end_star,0)
-    }
-}
+
 
 function findway(){
     if(search(0)!=search(mazelength*mazelength-1)){
@@ -176,11 +172,12 @@ function keyPressed(){
         is_get_end=true
         //终点奖励
         get_end()
+        play_final(end_star,0)
     }
     if(fullsize_final_begin==false&&fullsize_end==true&&index==0){
         //彩蛋奖励
         fullsize_final_begin=true
-        
+        console.log("yes")
 
     }
     if(fullsize_end==true){

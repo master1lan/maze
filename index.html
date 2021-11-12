@@ -8,11 +8,10 @@
   </head> 
   <script src="p5.min.js" ></script>
   <script src="mazeMap.js" ></script>
+  <script src="test_oren.js"></script>
   <script src="test_fullsize.js" ></script>
- <script src="test_oren.js"></script>
   <script src="final.js"></script>
   <!-- <script>
-    document.write('<script src="mazeMap.js?' +  Math.random() +  '"><\/script>');
     document.write('<script src="test_fullsize.js?' +  Math.random() +  '"><\/script>');
     document.write('<script src="final.js?' +  Math.random() +  '"><\/script>');
   </script> -->
@@ -23,7 +22,7 @@
     }
   </script>
   <body style="background-color: rgba(2,29,58,1);margin:0px;padding:0px;overflow:hidden;">
-    <div id="end">
+    <div id="end" style="visibility:hidden;">
       <p id="end_p" >感谢到达终点</p>
       <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img>
       <button type="button" onclick="read_over_end()" id="end_buttom" style="border-width: 0px;border-radius: 
@@ -37,7 +36,6 @@
     
     window.onload=()=>{
       const end_div=document.getElementById("end");
-      end_div.style.visibility="hidden";
       end_div.style.position="absolute";
       end_div.style.top=canvasPosition.top;
       end_div.style.left=canvasPosition.left;

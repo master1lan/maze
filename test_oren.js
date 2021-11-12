@@ -90,11 +90,12 @@ function pack_way(event){
         is_get_end=true
         //终点奖励
         get_end()
+        play_final(end_star,0)
     }
     if(oren_final_begin==false&&oren_end==true&&user_index==0&&userPath.X<beginPath.X+packageGap/2&&userPath.Y<=beginPath.Y+packageGap/2){
         //彩蛋奖励
         oren_final_begin=true
-
+        console.log("yes")
     }
     if(oren_end==true){
         tint(255,0)
