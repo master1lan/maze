@@ -94,7 +94,7 @@ function drawline(a,b)//划线，要判断是上下还是左右
     var y3=(y1+y2)/2;
     // stroke('green')
     stroke("rgba(2,29,58,1)")
-    strokeWeight(3)
+    strokeWeight(4)
     if(x1-x2==1||x1-x2==-1)//左右方向的点  需要上下划线
     {
         //竖线

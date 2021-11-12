@@ -17,10 +17,10 @@ function pack_way(event){
         x:userPath.X,
         y:userPath.Y
     }
-    topWallPx=parseInt(user_index%mazelength)*packageGap+0.3*packageGap+1+beginPath.Y
-    downWallPx=parseInt(user_index%mazelength+1)*packageGap-0.3*packageGap-1+beginPath.Y
-    leftWallPx=parseInt(user_index/mazelength)*packageGap+0.3*packageGap+1+beginPath.X
-    rightWallPx=parseInt(user_index/mazelength+1)*packageGap-0.3*packageGap-1+beginPath.X
+    topWallPx=parseInt(user_index%mazelength)*packageGap+0.3*packageGap+2+beginPath.Y
+    downWallPx=parseInt(user_index%mazelength+1)*packageGap-0.3*packageGap-2+beginPath.Y
+    leftWallPx=parseInt(user_index/mazelength)*packageGap+0.3*packageGap+2+beginPath.X
+    rightWallPx=parseInt(user_index/mazelength+1)*packageGap-0.3*packageGap-2+beginPath.X
     //up
     if(beta<0){
         //如果上升后原来这个格子里面
