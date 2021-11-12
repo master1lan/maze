@@ -63,7 +63,7 @@ function setup(){
 
 function draw(){
     if((fullsize_end==true||oren_end==true)&&is_get_end==false){
-        play_final(end_star,(val_x/15+val_y/15)*255*0.5)
+        play_final(end_star,0)
     }
 }
 
