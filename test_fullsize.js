@@ -1,8 +1,8 @@
 /**
  * this file should fill pc and android
  */
-
-var img_end;
+//必须在开始的时候渲染
+ const end_star=[]
 
 const squareSize=window.innerHeight>window.innerWidth?
                 window.innerWidth:window.innerHeight;
@@ -45,18 +45,26 @@ const userPath={
     Y:beginPath.Y+packageGap/2
 }
 
-
-
 function setup(){
     //创建一个全浏览器窗口大小的canvas
     createCanvas(window.innerWidth,window.innerHeight);
     drawChessBoard()
     findway()
     strokeWeight(packageGap*0.6)
-    stroke('black')
+    stroke('white')
     point(userPath.X, userPath.Y)
-    // img_end = loadImage('./img/end.jpg');
-    // setTimeout("get_end()",3000)
+    end_star.push(loadImage('img/rose.png'))
+    end_star.push(loadImage('img/B612.png'))
+    end_star.push(loadImage('img/planet.png'))
+    end_star.push(loadImage('img/star.png'))
+    end_star.push(loadImage('img/origin.png'))
+}
+
+
+function draw(){
+    if((fullsize_end==true||oren_end==true)&&is_get_end==false){
+        play_final(end_star,(val_x/15+val_y/15)*255*0.5)
+    }
 }
 
 function findway(){
@@ -76,7 +84,6 @@ function findway(){
 }
 
 
-
 /*
     2D:line(x1,y1,x2,y2)
 */
@@ -90,8 +97,8 @@ function drawline(a,b)//划线，要判断是上下还是左右
     var x3=(x1+x2)/2;
     var y3=(y1+y2)/2;
     // stroke('green')
-    stroke("white")
-    strokeWeight(4)
+    stroke("rgba(2,29,58,1)")
+    strokeWeight(3)
     if(x1-x2==1||x1-x2==-1)//左右方向的点  需要上下划线
     {
         //竖线
@@ -107,7 +114,7 @@ function drawline(a,b)//划线，要判断是上下还是左右
 
 
 function drawChessBoard(){//绘画
-    stroke("black")
+    stroke("white")
     strokeWeight(3)
     //为什么粗细会不同呢
     for(var i=0;i<mazelength+1;i++){
@@ -159,26 +166,30 @@ function keyPressed(){
         index+=mazelength
     }
     strokeWeight(packageGap*0.6+1)
-    stroke('white')
+    stroke('rgba(2,29,58,1)')
     point(userPath.X, userPath.Y)
     userPath.X+=addPath[0]
     userPath.Y+=addPath[1]
     //pc端的移动距离是固定的
     if(fullsize_end==false&&index==mazelength*mazelength-1){
         fullsize_end=true
-        // console.log("wow")
+        is_get_end=true
         //终点奖励
+        get_end()
     }
-    if(fullsize_final_begin==false&&fullsize_end==true&&user_index==0){
+    if(fullsize_final_begin==false&&fullsize_end==true&&index==0){
         //彩蛋奖励
         fullsize_final_begin=true
+        
 
+    }
+    if(fullsize_end==true){
+        tint(255,0)
+        image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
+        tint(255,(30-index/mazelength-index%mazelength)/30*10)
+        image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
     }
     strokeWeight(packageGap*0.6)
-    stroke('black')
+    stroke('white')
     point(userPath.X, userPath.Y)
-    if(fullsize_end==true){
-        //这里就是返回的时候渲染星星和月亮
-    }
-
 }

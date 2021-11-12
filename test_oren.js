@@ -13,9 +13,10 @@ function pack_way(event){
     const beta = event.beta,
     gamma = event.gamma;
     //先覆盖,或许是这里出现了抖动？
-    strokeWeight(packageGap*0.6+1)
-    stroke('white')
-    point(userPath.X, userPath.Y)
+    const val_item={
+        x:userPath.X,
+        y:userPath.Y
+    }
     topWallPx=parseInt(user_index%mazelength)*packageGap+0.3*packageGap+1+beginPath.Y
     downWallPx=parseInt(user_index%mazelength+1)*packageGap-0.3*packageGap-1+beginPath.Y
     leftWallPx=parseInt(user_index/mazelength)*packageGap+0.3*packageGap+1+beginPath.X
@@ -74,23 +75,34 @@ function pack_way(event){
             user_index-=15
         }
     }
+
+
+    strokeWeight(packageGap*0.6+1)
+    stroke('rgba(2,29,58,1)')
+    point(val_item.x,val_item.y)
     strokeWeight(packageGap*0.6)
-    stroke('black')
+    stroke('white')
     point(userPath.X, userPath.Y)
 
 
     if(oren_end==false&&user_index==mazelength*mazelength-1&&userPath.X>endPath.X-packageGap/2&&userPath.Y>endPath.Y-packageGap/2){
         oren_end=true
-        // console.log("yes!")
+        is_get_end=true
         //终点奖励
+        get_end()
     }
     if(oren_final_begin==false&&oren_end==true&&user_index==0&&userPath.X<beginPath.X+packageGap/2&&userPath.Y<=beginPath.Y+packageGap/2){
         //彩蛋奖励
         oren_final_begin=true
-    }
-    if(oren_end==true){
 
     }
+    if(oren_end==true){
+        tint(255,0)
+        image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
+        tint(255,(30-user_index/mazelength-user_index%mazelength)/30*10)
+        image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
+    }
+    
 }
 
 window.addEventListener("deviceorientation",pack_way)
