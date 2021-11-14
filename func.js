@@ -69,11 +69,14 @@ function setup(){
     strokeWeight(packageGap*0.6)
     stroke('white')
     point(userPath.X, userPath.Y)
-    // end_star.push(loadImage('img/rose.png'))
-    // end_star.push(loadImage('img/B612.png'))
-    // end_star.push(loadImage('img/planet.png'))
-    // end_star.push(loadImage('img/star.png'))
-    // end_star.push(loadImage('img/origin.png'))
+    end_star.push(loadImage('img/rose.png'))    //0
+    end_star.push(loadImage('img/B612.png'))
+    end_star.push(loadImage('img/planet.png'))
+    end_star.push(loadImage('img/star.png'))
+    end_star.push(loadImage('img/rose0.0.png')) //4
+    end_star.push(loadImage('img/rose0.1.png'))
+    end_star.push(loadImage('img/rose0.3.png'))
+    end_star.push(loadImage('img/rose0.5.png'))
 }
 
 
@@ -124,4 +127,9 @@ function drawChessBoard(){//绘画
 
 function abs(a){
     return a>0?a:-a;
+}
+
+
+function finalGift(){
+    document.getElementById("final_begin").style.visibility="visible";
 }

@@ -4,9 +4,9 @@ var fullsize_end=false
 var fullsize_final_begin=false
 
 function keyPressed(){
-    // if(is_get_end==true){
-    //     return
-    // }
+    if(is_get_end==true){
+        return
+    }
     var moveUp = keyCode == 38 //|| key=="↑"
     var moveLeft = keyCode == 37 //|| key=="↓"
     var moveDown = keyCode == 40 //|| key=="←"
@@ -39,25 +39,35 @@ function keyPressed(){
     userPath.X+=addPath[0]
     userPath.Y+=addPath[1]
     //pc端的移动距离是固定的
-    // if(fullsize_end==false&&index==mazelength*mazelength-1){
-    //     fullsize_end=true
-    //     is_get_end=true
-    //     //终点奖励
-    //     get_end()
-    //     play_final(end_star,0)
-    // }
-    // if(fullsize_final_begin==false&&fullsize_end==true&&index==0){
-    //     //彩蛋奖励
-    //     fullsize_final_begin=true
-    //     console.log("yes")
-
-    // }
-    // if(fullsize_end==true){
-    //     tint(255,0)
-    //     image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
-    //     tint(255,(30-index/mazelength-index%mazelength)/30*10)
-    //     image(end_star[0],beginPath.X,beginPath.Y,packageGap*0.9,packageGap*0.9)
-    // }
+    if(fullsize_end==false&&index==mazelength*mazelength-1){
+        fullsize_end=true
+        is_get_end=true
+        //终点奖励
+        get_end()
+        
+    }
+    if(fullsize_final_begin==false&&fullsize_end==true&&index==0){
+        //彩蛋奖励
+        fullsize_final_begin=true
+        // console.log("yes")
+        finalGift()
+    }
+    if(fullsize_end==true){
+        //准备几个不同透明度的rose
+        const path_origin=parseInt(index/mazelength)+(index%mazelength)     //欧式距离的另类表示，[0,2*mazelength-2]
+        // console.log(path_origin)
+        if(path_origin<2*4){
+            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*6){
+            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*10){
+            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*13){
+            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else{
+            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }
+    }
     strokeWeight(packageGap*0.6)
     stroke('white')
     point(userPath.X, userPath.Y)

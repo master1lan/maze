@@ -9,7 +9,7 @@
   <script src="p5.min.js" ></script>
   <script src="mazeMap.js" ></script>
   <script src="func.js" ></script>
-  <!-- <script src="oren_inertia.js"></script> -->
+  <script src="final.js"></script>
   <script>
     //根据不同的设备加载不同的文件
     if(window.innerHeight>window.innerWidth){
@@ -23,35 +23,47 @@
     function read_over_end(){
       is_get_end=false;
       document.getElementById("end").style.visibility="hidden";
+      play_final(end_star);
     }
   </script>
   <body style="background-color: rgba(2,29,58,1);margin:0px;padding:0px;overflow:hidden;">
-    <div id="end" style="visibility:hidden;">
-      <p id="end_p" >感谢到达终点</p>
-      <!-- <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img> -->
+    <div id="end" style="visibility:hidden;position:absolute;background-color: white;text-align: center;">
+      <p id="end_p" style="margin: 0;" ><span >感谢到达终点</span></p>
+      <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img>
       <button type="button" onclick="read_over_end()" id="end_buttom" style="border-width: 0px;border-radius: 
       3px;background: #1E90FF;outline: none;font-family: Microsoft YaHei;color: white;font-size: 17px;">还有一个彩蛋哦</button>
     </div>
-    <div id="final_begin">
-      
+    <div id="final_begin" style="visibility:hidden;position:absolute;background-color: white;text-align: center;">
+      <div id="final_begin_p">
+        <p  style="margin: 0;" >这里写一些话，明天想好,你知道说什么吗？什么都不知道就不要说了</p>
+      </div>
+      <img src="img/end.jpg" alt="img" style="width:100%;height:auto;"></img>
     </div>
   </body>
   <script>
     
     window.onload=()=>{
       const end_div=document.getElementById("end");
-      end_div.style.position="absolute";
       end_div.style.top=canvasPosition.top;
       end_div.style.left=canvasPosition.left;
       end_div.style.width=mazeSize.width;
       end_div.style.height=mazeSize.height;
-      end_div.style.backgroundColor="white";
-      end_div.style.textAlign="center";
       const end_p=document.getElementById("end_p");
       end_p.style.height=mazeSize.height*0.125;
+      end_p.style.lineHeight=mazeSize.height*0.125+"px";
       const end_buttom=document.getElementById("end_buttom");
       end_buttom.style.width=mazeSize.width;
       end_buttom.style.height=mazeSize.height*0.125;
+
+      const final_begin=document.getElementById("final_begin");
+      final_begin.style.top=canvasPosition.top;
+      final_begin.style.left=canvasPosition.left;
+      final_begin.style.width=mazeSize.width;
+      final_begin.style.height=mazeSize.height;
+      const final_begin_p=document.getElementById("final_begin_p");
+      final_begin_p.style.height=mazeSize.height*0.25;
+      final_begin_p.style.lineHeight=mazeSize.height*0.125+"px";
+      
     }
   </script>
 </html>

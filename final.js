@@ -3,23 +3,23 @@ function get_end(){
     document.getElementById("end").style.visibility="visible";
 }
 
-function play_final(end_star,degree){
+function play_final(end_star){
     if(window.innerHeight>window.innerWidth){
         //android
         // image(end_star[4],0,0,window.innerWidth,canvasPosition.top-5)
         // image(end_star[4],0,canvasPosition.bottom,window.innerWidth,canvasPosition.top)
-        star_with_android(end_star,degree)
+        star_with_android(end_star)
     }else{
         //pc
         // image(end_star[4],0,0,canvasPosition.left,window.innerHeight)
         // image(end_star[4],canvasPosition.right,0,canvasPosition.left,window.innerHeight)
-        star_with_pc(end_star,degree)
+        star_with_pc(end_star)
     }
 }
 
 
 //这里要针对pc和android分别渲染
-function star_with_pc(end_star,degree){
+function star_with_pc(end_star){
     //分为左边和右边
     //左边像素范围 [0,canvasPosition.left]
     //B612
@@ -32,7 +32,7 @@ function star_with_pc(end_star,degree){
     image(end_star[2],endPath.X+packageGap*3-Math.random(),0+Math.random(),packageGap*3,packageGap*6)
 }
 
-function star_with_android(end_star,degree){
+function star_with_android(end_star){
     //分为上面和下面
     //上面像素范围 [0,canvasPosition.top]
 

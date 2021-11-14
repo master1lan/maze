@@ -6,7 +6,9 @@ const orenItem={
     index:0,
     //小球趋势分量,-1,0,1
     x_trend:0,
-    y_trend:0
+    y_trend:0,
+    end:false,
+    final_begin:false,
 }
 /**
  * 这个对象实现迷宫墙，需要一个函数实时更新参数
@@ -36,6 +38,10 @@ const changeWall=(indexBefore,indexAfter)=>{
 
 //绘制小球
 function draw(){
+    if(is_get_end==true){
+        return
+    }
+    
 
     if(orenItem.x_trend==0&&orenItem.y_trend==0) return;
 
@@ -103,6 +109,32 @@ function draw(){
         ){
             // console.log("up with index change")
             letItGo("up",true);
+        }
+    }
+
+    if(orenItem.index==mazelength*mazelength-1&&orenItem.end==false){
+        orenItem.end=true;
+        is_get_end=true;
+        get_end()
+    }
+    if(orenItem.end==true&&orenItem.index==0&&orenItem.final_begin==false){
+        orenItem.final_begin=true;
+        finalGift()
+    }
+
+    if(orenItem.end==true){
+        const path_origin=parseInt(orenItem.index/mazelength)+(orenItem.index%mazelength)     //欧式距离的另类表示，[0,2*mazelength-2]
+        // console.log(path_origin)
+        if(path_origin<2*4){
+            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*6){
+            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*10){
+            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else if(path_origin<2*13){
+            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        }else{
+            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
         }
     }
     
