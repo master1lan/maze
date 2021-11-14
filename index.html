@@ -5,16 +5,20 @@
   <link rel="icon" href='favicon.ico'>
   <head>
     <title>maze!</title>	
-  </head> 
+  </head>
   <script src="p5.min.js" ></script>
   <script src="mazeMap.js" ></script>
-  <script src="test_fullsize.js" ></script>
-  <script src="test_oren.js"></script>
-  <script src="final.js"></script>
-  <!-- <script>
-    document.write('<script src="test_fullsize.js?' +  Math.random() +  '"><\/script>');
-    document.write('<script src="final.js?' +  Math.random() +  '"><\/script>');
-  </script> -->
+  <script src="func.js" ></script>
+  <!-- <script src="oren_inertia.js"></script> -->
+  <script>
+    //根据不同的设备加载不同的文件
+    if(window.innerHeight>window.innerWidth){
+      //android
+      document.write('<script src="oren_inertia.js'+  '"><\/script>');
+    }else{
+      document.write('<script src="test_fullsize.js?' + '"><\/script>');
+    }
+  </script>
   <script>
     function read_over_end(){
       is_get_end=false;
@@ -24,7 +28,7 @@
   <body style="background-color: rgba(2,29,58,1);margin:0px;padding:0px;overflow:hidden;">
     <div id="end" style="visibility:hidden;">
       <p id="end_p" >感谢到达终点</p>
-      <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img>
+      <!-- <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img> -->
       <button type="button" onclick="read_over_end()" id="end_buttom" style="border-width: 0px;border-radius: 
       3px;background: #1E90FF;outline: none;font-family: Microsoft YaHei;color: white;font-size: 17px;">还有一个彩蛋哦</button>
     </div>
@@ -46,11 +50,8 @@
       const end_p=document.getElementById("end_p");
       end_p.style.height=mazeSize.height*0.125;
       const end_buttom=document.getElementById("end_buttom");
-      end_buttom.style.position="absolute";
       end_buttom.style.width=mazeSize.width;
       end_buttom.style.height=mazeSize.height*0.125;
-      end_buttom.style.bottom=0;
-      end_buttom.style.left=0;
     }
   </script>
 </html>
