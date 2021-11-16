@@ -44,11 +44,11 @@ function star_with_android(end_star){
     image(end_star[3],beginPath.X+packageGap*13,0,beginPath.Y/2*0.2,beginPath.Y*0.2);
     //下面像素范围 [canvasPosition.bottom,window.innerHeight]
     image(end_star[3],beginPath.X-packageGap,endPath.Y,packageGap*2,packageGap*4);
-    image(end_star[2],beginPath.X+packageGap*2,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*6,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*8,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[2],beginPath.X+packageGap*2,endPath.Y,beginPath.Y/2*0.4,beginPath.Y*0.4);
+    image(end_star[3],beginPath.X+packageGap*6,endPath.Y,beginPath.Y/2*0.5,beginPath.Y*0.5);
+    image(end_star[3],beginPath.X+packageGap*8,endPath.Y,beginPath.Y/2*0.3,beginPath.Y*0.3);
     image(end_star[2],beginPath.X+packageGap*11,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*13,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*13,endPath.Y,beginPath.Y/2*0.6,beginPath.Y*0.6);
 }
 
 
