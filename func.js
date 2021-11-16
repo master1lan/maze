@@ -55,9 +55,9 @@ function findway(){
         drawline(num,neihbour);//划线
         union(num,neihbour);
         }
-        // setTimeout(function(){
-        //     findway()},5)
-            findway();
+        setTimeout(function(){
+            findway()},10)
+            // findway();
     }
 }
 
@@ -65,7 +65,8 @@ function setup(){
     //创建一个全浏览器窗口大小的canvas
     createCanvas(window.innerWidth,window.innerHeight);
     drawChessBoard()
-    findway()
+    setTimeout("findway()",1500);
+    // findway()
     strokeWeight(packageGap*0.6)
     stroke('white')
     point(userPath.X, userPath.Y)
