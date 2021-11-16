@@ -57,15 +57,15 @@ function keyPressed(){
         const path_origin=parseInt(index/mazelength)+(index%mazelength)     //欧式距离的另类表示，[0,2*mazelength-2]
         // console.log(path_origin)
         if(path_origin<2*4){
-            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }else if(path_origin<2*6){
-            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }else if(path_origin<2*10){
-            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }else if(path_origin<2*13){
-            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }else{
-            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }
     }
     strokeWeight(packageGap*0.6)

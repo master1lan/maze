@@ -3,8 +3,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href='favicon.ico'>
+  <link rel="stylesheet"  href="style.css">
   <head>
-    <title>maze!</title>	
+    <title>maze!</title>
   </head>
   <script src="p5.min.js" ></script>
   <script src="mazeMap.js" ></script>
@@ -15,8 +16,11 @@
     if(window.innerHeight>window.innerWidth){
       //android
       document.write('<script src="oren_inertia.js'+  '"><\/script>');
+      console.log("欢迎，android端是我花费心思最多的终端，在这里你可以体验全部的特效");
     }else{
+      //pc
       document.write('<script src="test_fullsize.js?' + '"><\/script>');
+      console.log("欢迎，pc端是作为满足其他人需求而设计的，在这里你可以体验部分特效，为体验全部特效请使用带陀螺仪的手机打开此页面");
     }
   </script>
   <script>
@@ -26,23 +30,26 @@
       play_final(end_star);
     }
   </script>
-  <body style="background-color: rgba(2,29,58,1);margin:0px;padding:0px;overflow:hidden;">
-    <div id="end" style="visibility:hidden;position:absolute;background-color: white;text-align: center;">
-      <p id="end_p" style="margin: 0;" ><span >感谢到达终点</span></p>
-      <img src="img/end.jpg" alt="end" style="width:100%;height:auto"></img>
-      <button type="button" onclick="read_over_end()" id="end_buttom" style="border-width: 0px;border-radius: 
-      3px;background: #1E90FF;outline: none;font-family: Microsoft YaHei;color: white;font-size: 17px;">还有一个彩蛋哦</button>
+  <body >
+    <noscript>
+      这个网页使用JavaScript语言写成，请打开允许JavaScript脚本运行设置再次刷新此页面<br />
+      this document tree was created by javascript language,please make sure allowing javascript run
+    </noscript>
+    <div id="end" >
+      <p id="end_p"  ><span >本来只画了一幅画，但是转念一想又做了个页面,having fun!</span></p>
+      <img src="img/end.jpg" alt="这里是我画的画，如果没有刷新出来请直接找我要(按道理能刷出网页就看不到这段话)" ></img>
+      <button type="button" onclick="read_over_end()" id="end_buttom" >还有一个彩蛋哦</button>
     </div>
-    <div id="final_begin" style="visibility:hidden;position:absolute;background-color: white;text-align: center;">
+    <div id="final_begin" >
       <div id="final_begin_p">
-        <p  style="margin: 0;" >这里写一些话，明天想好,你知道说什么吗？什么都不知道就不要说了</p>
+        <p >在小说中，飞行员相信小王子回到了星球；但在改编电影中，飞行员的邻居帮助小王子回到了星球。</p>
       </div>
-      <img src="img/end.jpg" alt="img" style="width:100%;height:auto;"></img>
+      <img src="img/final.jpeg" alt="这幅画描述了小王子遇见玫瑰" ></img>
     </div>
   </body>
   <script>
-    
     window.onload=()=>{
+      //以后可以考虑使用rem修改，但是现在就这样吧
       const end_div=document.getElementById("end");
       end_div.style.top=canvasPosition.top;
       end_div.style.left=canvasPosition.left;
@@ -51,6 +58,7 @@
       const end_p=document.getElementById("end_p");
       end_p.style.height=mazeSize.height*0.125;
       end_p.style.lineHeight=mazeSize.height*0.125+"px";
+      end_p.style.fontSize=mazeSize.width*0.035+"px";
       const end_buttom=document.getElementById("end_buttom");
       end_buttom.style.width=mazeSize.width;
       end_buttom.style.height=mazeSize.height*0.125;
@@ -61,9 +69,9 @@
       final_begin.style.width=mazeSize.width;
       final_begin.style.height=mazeSize.height;
       const final_begin_p=document.getElementById("final_begin_p");
-      final_begin_p.style.height=mazeSize.height*0.25;
-      final_begin_p.style.lineHeight=mazeSize.height*0.125+"px";
-      
+      final_begin_p.style.height=mazeSize.height*0.2;
+      final_begin_p.style.lineHeight=mazeSize.height*0.1+"px";
+      final_begin_p.style.fontSize=mazeSize.width*0.035+"px";
     }
   </script>
 </html>

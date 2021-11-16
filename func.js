@@ -77,6 +77,7 @@ function setup(){
     end_star.push(loadImage('img/rose0.1.png'))
     end_star.push(loadImage('img/rose0.3.png'))
     end_star.push(loadImage('img/rose0.5.png'))
+    end_star.push(loadImage('img/backend.png')) //8
 }
 
 

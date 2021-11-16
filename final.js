@@ -37,18 +37,18 @@ function star_with_android(end_star){
     //上面像素范围 [0,canvasPosition.top]
 
     //B612
-    image(end_star[1],beginPath.X,0,packageGap,packageGap*2);
-    image(end_star[2],beginPath.X+packageGap*3-Math.random(),0+Math.random(),packageGap*2,packageGap*4);
-    image(end_star[3],beginPath.X+packageGap*7-Math.random(),0+Math.random(),packageGap*1.5,packageGap*3);
-    image(end_star[2],beginPath.X+packageGap*9-Math.random(),0+Math.random(),packageGap*2.5,packageGap*5);
-    image(end_star[3],beginPath.X+packageGap*13-Math.random(),0+Math.random(),packageGap,packageGap*2);
+    image(end_star[1],beginPath.X,0,beginPath.Y/2*0.3,beginPath.Y*0.3);
+    image(end_star[2],beginPath.X+packageGap*3,0,beginPath.Y/2*0.6,beginPath.Y*0.6);
+    image(end_star[3],beginPath.X+packageGap*7,0,beginPath.Y/2*0.4,beginPath.Y*0.4);
+    image(end_star[2],beginPath.X+packageGap*9,0,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*13,0,beginPath.Y/2*0.2,beginPath.Y*0.2);
     //下面像素范围 [canvasPosition.bottom,window.innerHeight]
     image(end_star[3],beginPath.X,endPath.Y,packageGap*2,packageGap*4);
-    image(end_star[2],beginPath.X+packageGap*3+Math.random(),endPath.Y+Math.random(),packageGap*2,packageGap*4);
-    image(end_star[3],beginPath.X+packageGap*7+Math.random(),endPath.Y+Math.random(),packageGap*2,packageGap*4);
-    image(end_star[3],beginPath.X+packageGap*9+Math.random(),endPath.Y+Math.random(),packageGap*2,packageGap*4);
-    image(end_star[2],beginPath.X+packageGap*12+Math.random(),endPath.Y+Math.random(),packageGap*2,packageGap*4);
-    image(end_star[3],beginPath.X+packageGap*14+Math.random(),endPath.Y+Math.random(),packageGap*2,packageGap*4);
+    image(end_star[2],beginPath.X+packageGap*3,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*7,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*9,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[2],beginPath.X+packageGap*12,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*14,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
 }
 
 

@@ -48,7 +48,7 @@ function draw(){
     //right
     if(orenItem.x_trend>0){
         if(packageGap*0.05+userPath.X<Wall.right){
-            console.log("right without index change")
+            // console.log("right without index change")
             letItGo("right",false);
         }
         else if(
@@ -56,7 +56,7 @@ function draw(){
             userPath.Y<Wall.bottom&&
             userPath.Y>Wall.top
         ){
-            console.log("right with index change")
+            // console.log("right with index change")
             letItGo("right",true);
         }
 
@@ -64,7 +64,7 @@ function draw(){
     //left
     else if(orenItem.x_trend<0){
         if(-packageGap*0.05+userPath.X>Wall.left){
-            console.log("left without index change")
+            // console.log("left without index change")
             letItGo("left",false);
         }
         else if(
@@ -72,7 +72,7 @@ function draw(){
             userPath.Y<Wall.bottom&&
             userPath.Y>Wall.top
         ){
-            console.log("left with index change")
+            // console.log("left with index change")
             letItGo("left",true);
         }
     }
@@ -111,30 +111,45 @@ function draw(){
             letItGo("up",true);
         }
     }
-
-    if(orenItem.index==mazelength*mazelength-1&&orenItem.end==false){
+    // 到达终点
+    if(userPath.X>endPath.X-0.6*packageGap&&userPath.Y>endPath.Y-0.6*packageGap&&
+        orenItem.index==mazelength*mazelength-1&&orenItem.end==false){
         orenItem.end=true;
         is_get_end=true;
-        get_end()
+        get_end();
     }
+    // 再次到达起点
     if(orenItem.end==true&&orenItem.index==0&&orenItem.final_begin==false){
         orenItem.final_begin=true;
-        finalGift()
+        is_get_end=true;
+        finalGift();
     }
 
     if(orenItem.end==true){
         const path_origin=parseInt(orenItem.index/mazelength)+(orenItem.index%mazelength)     //欧式距离的另类表示，[0,2*mazelength-2]
         // console.log(path_origin)
-        if(path_origin<2*4){
-            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+        // 本可以不这么麻烦，想要修改直接注释就好了 beginPath.Y
+        if(path_origin<4){
+            image(end_star[8],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+            image(end_star[1],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+        }else if(path_origin<2*4){
+            image(end_star[0],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
+            image(end_star[8],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+            image(end_star[1],beginPath.X,0,beginPath.Y/2*0.8,beginPath.Y*0.8);
         }else if(path_origin<2*6){
-            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[7],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
+            image(end_star[8],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+            image(end_star[1],beginPath.X,0,beginPath.Y/2*0.7,beginPath.Y*0.7);
         }else if(path_origin<2*10){
-            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[6],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
+            image(end_star[8],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+            image(end_star[1],beginPath.X,0,beginPath.Y/2*0.6,beginPath.Y*0.6);
         }else if(path_origin<2*13){
-            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[5],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
+            image(end_star[8],beginPath.X,0,beginPath.Y/2*0.9,beginPath.Y*0.9);
+            image(end_star[1],beginPath.X,0,beginPath.Y/2*0.5,beginPath.Y*0.5);
         }else{
-            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9)
+            image(end_star[4],beginPath.X+2,beginPath.Y+2,packageGap*0.9,packageGap*0.9);
         }
     }
     

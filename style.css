@@ -1,0 +1,53 @@
+body{
+    background-color:rgba(2,29,58,1);
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#end{
+    visibility: hidden;
+    /* visibility: visible; */
+    position: absolute;
+    background-color: white;
+    text-align:center;
+}
+
+#end_p{
+    margin: 0px;
+}
+
+img{
+    width: 100%;
+    height:auto;
+}
+
+button{
+    border-width: 0px;
+    border-radius: 3px;
+    background: #1E90FF;
+    outline: none;
+    font-family: Microsoft YaHei;
+    color:white;
+    font-size: 17px;
+}
+
+#final_begin{
+    visibility: hidden;
+    /* visibility: visible; */
+    position: absolute;
+    background-color: white;
+    text-align:center;
+}
+
+p{
+    margin: 0px;
+}
+
+
+
+noscript{
+    background-color:white;
+    color:red;
+    font-size: 17px;
+}
