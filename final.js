@@ -38,17 +38,17 @@ function star_with_android(end_star){
 
     //B612
     image(end_star[1],beginPath.X,0,beginPath.Y/2*0.3,beginPath.Y*0.3);
-    image(end_star[2],beginPath.X+packageGap*3,0,beginPath.Y/2*0.6,beginPath.Y*0.6);
+    image(end_star[2],beginPath.X+beginPath.Y/2*0.9,0,beginPath.Y/2*0.6,beginPath.Y*0.6);
     image(end_star[3],beginPath.X+packageGap*7,0,beginPath.Y/2*0.4,beginPath.Y*0.4);
     image(end_star[2],beginPath.X+packageGap*9,0,beginPath.Y/2*0.8,beginPath.Y*0.8);
     image(end_star[3],beginPath.X+packageGap*13,0,beginPath.Y/2*0.2,beginPath.Y*0.2);
     //下面像素范围 [canvasPosition.bottom,window.innerHeight]
-    image(end_star[3],beginPath.X,endPath.Y,packageGap*2,packageGap*4);
-    image(end_star[2],beginPath.X+packageGap*3,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*7,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*9,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[2],beginPath.X+packageGap*12,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
-    image(end_star[3],beginPath.X+packageGap*14,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X-packageGap,endPath.Y,packageGap*2,packageGap*4);
+    image(end_star[2],beginPath.X+packageGap*2,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*6,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*8,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[2],beginPath.X+packageGap*11,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
+    image(end_star[3],beginPath.X+packageGap*13,endPath.Y,beginPath.Y/2*0.8,beginPath.Y*0.8);
 }
 
 
